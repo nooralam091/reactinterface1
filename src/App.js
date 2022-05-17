@@ -22,7 +22,7 @@ function App() {
     let order=(orderBy==='asc')?1:-1;
     return(
       a[sortBy].toLowerCase()<b[sortBy].toLowerCase()
-      ?-1*order:1*order
+      ?1*order:-1*order
     )
   })
 
@@ -50,7 +50,12 @@ function App() {
       </h1>
       <AddAppointment />
       <Search query={query}
-      onQueryChange={myQuery=>setQuery(myQuery)} />
+      onQueryChange={myQuery=>setQuery(myQuery)} 
+      orderBy={orderBy}
+      orderByChange={myOrderBy=>setOrderBy(myOrderBy)}
+      sortBy={sortBy}
+      onSortByChange={mySortBy=>setSortBy(mySortBy)}/>
+      
       <ul className="divide-y divide-gray-200">        
         {filteredAppointmentsList.map((appointment) => (          
           <AppointmentInfo 
