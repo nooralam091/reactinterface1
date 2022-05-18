@@ -10,6 +10,7 @@ function App() {
   let [query,setQuery]=useState("");
   let [sortBy,setSortBy]=useState("petName");
   let [orderBy,setOrderBy]=useState("asc");
+  
   const filteredAppointmentsList=AppointmentList.filter(
     item=>{
       return (
@@ -41,6 +42,7 @@ function App() {
     // .then(response=>{return response.json()})
     // .then(data=>setAppointmentList(data))
     },[fetchData]);
+  
 
   return (
     <div className="App container mx-auto mt-3 font-thin">
@@ -48,7 +50,10 @@ function App() {
         <BsFillBarChartFill className="inline-block text-red-400 align-auto" />
         Your appointments
       </h1>
-      <AddAppointment />
+      <AddAppointment 
+      onSendAppointment={myAppointment=>setAppointmentList([...AppointmentList,myAppointment])}
+      lastId={AppointmentList.reduce((max,item)=>Number(item.id)>max?Number(item.id):max,0)}
+      />
       <Search query={query}
       onQueryChange={myQuery=>setQuery(myQuery)} 
       orderBy={orderBy}

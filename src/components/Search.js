@@ -4,7 +4,7 @@ const Dropdown=({toggle,orderBy,orderByChange,sortBy,onSortByChange})=>{
   if(!toggle){
     return null;
   }
-  console.log(sortBy);
+  
     return(
       
         <div className="origin-top-right absolute right-0 mt-2 w-56
